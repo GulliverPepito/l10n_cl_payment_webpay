@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record model="ir.ui.view" id="paypal_view_company_inherit_form">
+        <field name="name">paypal.view.company.inherit.form</field>
+        <field name="inherit_id" ref="base.view_company_form"/>
+        <field name="model">res.company</field>
+        <field name="arch" type="xml">
+            <notebook>
+                <page string="WebPay">
+                    <group cols="4">
+                        <field name="commerce_code" required="1"/>
+                        <field name="online_mode"/>
+                    </group>
+                </page>
+            </notebook>
+        </field>
+    </record>
+</odoo>

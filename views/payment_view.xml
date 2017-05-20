@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record model="ir.ui.view" id="acquirer_form_webpay">
+        <field name="name">acquirer.form.webpay</field>
+        <field name="inherit_id" ref="payment.acquirer_form"/>
+        <field name="model">payment.acquirer</field>
+        <field name="arch" type="xml">
+            <xpath expr='//group[@name="acquirer"]' position='after'>
+                <group attrs="{'invisible': [('provider', '!=', 'webpay')]}">
+                    <field name="webpay_private_key"/>
+                    <field name="webpay_public_cert"/>
+                    <field name="webpay_cert"/>
+                    <field name="webpay_environment"/>
+                    <a colspan="2" href="https://www.webpay.cl/portalpagodirecto/pages/index.jsf" target="_blank">
+                        Cómo configurar tu cuenta Webpay?
+                    </a>
+                </group>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="transaction_form_webpay" model="ir.ui.view">
+        <field name="name">transaction.form.webpay</field>
+        <field name="model">payment.transaction</field>
+        <field name="inherit_id" ref="payment.transaction_form"/>
+        <field name="arch" type="xml">
+            <xpath expr='//notebook' position='inside'>
+                <page string="Detalles Tx Webpay">
+                    <group>
+                        <field name="webpay_txn_type"/>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>
